@@ -1,14 +1,14 @@
 package org.example.cxc_hrm.entity;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Entity(name = "photos")
+
+@Entity(name = "images")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class PhotoEntity extends BaseEntity{
     private String email;
 }
