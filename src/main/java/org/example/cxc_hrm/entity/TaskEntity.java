@@ -2,6 +2,7 @@ package org.example.cxc_hrm.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 import org.example.cxc_hrm.entity.enums.Position;
 import org.example.cxc_hrm.entity.enums.Priority;
@@ -21,5 +22,7 @@ public class TaskEntity extends BaseEntity{
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate estimate;
     private Priority priority;
+    @ManyToOne
+    private ProjectEntity projectEntity;
     private Status status;
 }

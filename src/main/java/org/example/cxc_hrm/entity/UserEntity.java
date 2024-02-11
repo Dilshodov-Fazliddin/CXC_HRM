@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
-
+@EqualsAndHashCode(callSuper = true)
 @Entity(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
