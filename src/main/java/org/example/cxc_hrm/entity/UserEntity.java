@@ -26,6 +26,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private String password;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDay;
+    private String username;
     private Position position;
     @ManyToOne
     private CompanyEntity company;
