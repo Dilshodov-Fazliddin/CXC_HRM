@@ -34,6 +34,7 @@ public class SecurityConfig {
         this.userService = userService;
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -45,10 +46,10 @@ public class SecurityConfig {
                     return corsConfiguration;
                 }))
                 .csrf(AbstractHttpConfigurer::disable)
-
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requestsConfigurer) ->
                         requestsConfigurer
+                                .requestMatchers("/cxc/v1/user/auth/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

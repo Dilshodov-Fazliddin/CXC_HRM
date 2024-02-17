@@ -1,6 +1,7 @@
 package org.example.cxc_hrm.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
@@ -22,10 +23,12 @@ import java.util.Collections;
 public class UserEntity extends BaseEntity implements UserDetails {
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String mail;
     private String password;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDay;
+    @Column(unique = true)
     private String username;
     private Position position;
     @ManyToOne

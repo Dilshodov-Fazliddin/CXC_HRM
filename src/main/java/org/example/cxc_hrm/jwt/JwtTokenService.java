@@ -7,12 +7,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.example.cxc_hrm.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+@Service
 public class JwtTokenService {
     @Value("${jwt.secret.key}")
     private String secretKey;

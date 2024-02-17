@@ -1,6 +1,6 @@
 package org.example.cxc_hrm.exception;
 
-import org.example.cxc_hrm.domain.StandardResponse;
+import org.example.cxc_hrm.domain.response.StandardResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

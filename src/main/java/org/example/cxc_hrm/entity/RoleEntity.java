@@ -1,5 +1,6 @@
 package org.example.cxc_hrm.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
 @EqualsAndHashCode(callSuper = true)
@@ -7,9 +8,9 @@ import lombok.*;
 @Entity(name = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Builder
 public class RoleEntity extends BaseEntity {
+    @Column(unique = true)
     private String name;
 }

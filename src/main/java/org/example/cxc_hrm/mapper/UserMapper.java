@@ -2,7 +2,6 @@ package org.example.cxc_hrm.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.example.cxc_hrm.domain.UserCreateDto;
-import org.example.cxc_hrm.entity.RoleEntity;
 import org.example.cxc_hrm.entity.UserEntity;
 import org.example.cxc_hrm.exception.DataNotFoundException;
 import org.example.cxc_hrm.repository.RoleRepository;
