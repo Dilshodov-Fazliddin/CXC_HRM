@@ -17,6 +17,5 @@ public class UserCreateDto {
     private String password;
     private LocalDate birthDay;
     private String username;
-    private Position position;
-    private CompanyEntity company;
+
 }
