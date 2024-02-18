@@ -34,7 +34,7 @@ public class SecurityConfig {
         this.userService = userService;
     }
 
-
+    private final String[] permitAll = {"/swagger-ui/**", "/v3/api-docs/**", "/cxc/v1/user/auth/**"};
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requestsConfigurer) ->
                         requestsConfigurer
-                                .requestMatchers("/cxc/v1/user/auth/**").permitAll()
+                                .requestMatchers(permitAll).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
