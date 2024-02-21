@@ -2,6 +2,7 @@ package org.example.cxc_hrm.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.cxc_hrm.domain.LoginDto;
+import org.example.cxc_hrm.domain.VerifyForgetPasswordDto;
 import org.example.cxc_hrm.domain.response.JwtResponse;
 import org.example.cxc_hrm.domain.response.StandardResponse;
 import org.example.cxc_hrm.domain.UserCreateDto;
@@ -64,10 +65,40 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public ResponseEntity<StandardResponse<?>> verify(Integer code, String email) {
-        UserEntity user = userRepository.findByMail(email).orElseThrow(() -> new DataNotFoundException("User not found"));
+        UserEntity user = userRepository.findByMailAndCode(email,code).orElseThrow(() -> new DataNotFoundException("User not found"));
         user.setCode(null);
         user.setIsEnabled(true);
         return ResponseEntity.ok(StandardResponse.builder().status(200).message("User verified").data(jwtTokenService.generateAccessToken(userRepository.save(user))).build());
+    }
+
+    @Override
+    public ResponseEntity<StandardResponse<?>> forgetPassword(String email) {
+        UserEntity user = userRepository.findByMail(email).orElseThrow(() -> new DataNotFoundException("User not found"));
+        int code=new Random().nextInt(1000,9000);
+        user.setCode(code);
+        userRepository.save(user);
+        mailService.sendVerifyCode(code,email);
+        return ResponseEntity.ok(StandardResponse.builder().status(200).message("send verify code").data(null).build());
+    }
+
+    @Override
+    public ResponseEntity<StandardResponse<?>> verifyForgetCode(VerifyForgetPasswordDto dto) {
+        UserEntity user = userRepository.findByMailAndCode(dto.getEmail(), dto.getEmailCode()).orElseThrow(() -> new DataNotFoundException("User not found"));
+        userRepository.save(user);
+        return ResponseEntity.ok(StandardResponse.builder().data(null).message("code is checked").status(200).build());
+    }
+
+    @Override
+    public ResponseEntity<StandardResponse<?>> verifyForgetCodeSetNewPassword(String email, String password) {
+        UserEntity user = userRepository.findByMail(email).orElseThrow(() -> new DataNotFoundException("User not found"));
+        if (passwordEncoder.matches(password, user.getPassword())){
+            throw new NotAcceptableException("this password is the same as the old password");
+        }else {
+            user.setCode(null);
+            user.setPassword(passwordEncoder.encode(password));
+            userRepository.save(user);
+        }
+        return ResponseEntity.ok(StandardResponse.builder().status(200).message("your password is changed").data(null).build());
     }
 
 
