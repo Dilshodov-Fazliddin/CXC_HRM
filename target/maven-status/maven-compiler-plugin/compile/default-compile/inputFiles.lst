@@ -23,6 +23,7 @@ D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\enums\Position
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\TaskEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\ProjectEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\domain\response\JwtResponse.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\domain\VerifyForgetPasswordDto.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\RoleEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\jwt\JwtTokenFilter.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\ImageEntity.java
