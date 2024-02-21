@@ -1,11 +1,13 @@
 org\example\cxc_hrm\entity\enums\Position.class
 org\example\cxc_hrm\mapper\UserMapper.class
+org\example\cxc_hrm\domain\VerifyForgetPasswordDto.class
 org\example\cxc_hrm\entity\UserEntity$UserEntityBuilder.class
 org\example\cxc_hrm\service\impl\MailServiceImpl.class
 org\example\cxc_hrm\entity\UserEntity.class
 org\example\cxc_hrm\service\impl\UserServiceImpl.class
 org\example\cxc_hrm\jwt\JwtTokenFilter.class
 org\example\cxc_hrm\entity\enums\Priority.class
+org\example\cxc_hrm\domain\VerifyForgetPasswordDto$VerifyForgetPasswordDtoBuilder.class
 org\example\cxc_hrm\jwt\JwtTokenService.class
 org\example\cxc_hrm\exception\NotAcceptableException.class
 org\example\cxc_hrm\entity\RoleEntity.class
