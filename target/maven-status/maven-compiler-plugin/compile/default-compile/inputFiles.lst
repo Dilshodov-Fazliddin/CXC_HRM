@@ -34,5 +34,6 @@ D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\ImageEntity.ja
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\config\SecurityConfig.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\repository\UserRepository.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\auth\AuthenticationService.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\controller\UserController.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\mapper\UserMapper.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\RoleService.java

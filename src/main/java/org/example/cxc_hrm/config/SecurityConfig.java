@@ -52,6 +52,7 @@ public class SecurityConfig {
                         requestsConfigurer
                                 .requestMatchers(permitAll).permitAll()
                                 .requestMatchers(onlyAdmin).hasRole("ADMIN")
+                                .requestMatchers("/cxc/v1/user/block","cxc/v1/user/unblock").hasAnyRole("ADMIN","SUPER_ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
