@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -99,6 +100,22 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             userRepository.save(user);
         }
         return ResponseEntity.ok(StandardResponse.builder().status(200).message("your password is changed").data(null).build());
+    }
+
+    @Override
+    public ResponseEntity<StandardResponse<?>> blockUser(UUID id) {
+        UserEntity user = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException("User not found"));
+        user.setIsEnabled(false);
+        userRepository.save(user);
+        return ResponseEntity.ok(StandardResponse.builder().data(null).status(200).message("User successfully blocked").build());
+    }
+
+    @Override
+    public ResponseEntity<StandardResponse<?>> unblockUser(UUID id) {
+        UserEntity user = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException("User not found"));
+        user.setIsEnabled(true);
+        userRepository.save(user);
+        return ResponseEntity.ok(StandardResponse.builder().message("User successfully unblocked").status(200).data(null).build());
     }
 
 

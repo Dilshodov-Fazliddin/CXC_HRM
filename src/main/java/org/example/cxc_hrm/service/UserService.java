@@ -7,6 +7,8 @@ import org.example.cxc_hrm.domain.UserCreateDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public interface UserService {
      ResponseEntity<StandardResponse<?>>signUp(UserCreateDto userCreateDto);
@@ -15,4 +17,6 @@ public interface UserService {
      ResponseEntity<StandardResponse<?>>forgetPassword(String email);
      ResponseEntity<StandardResponse<?>>verifyForgetCode(VerifyForgetPasswordDto dto);
      ResponseEntity<StandardResponse<?>>verifyForgetCodeSetNewPassword(String email,String password);
+     ResponseEntity<StandardResponse<?>>blockUser(UUID id);
+     ResponseEntity<StandardResponse<?>>unblockUser(UUID id);
 }

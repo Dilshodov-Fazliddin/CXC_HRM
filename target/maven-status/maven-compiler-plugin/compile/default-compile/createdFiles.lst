@@ -31,6 +31,7 @@ org\example\cxc_hrm\domain\response\JwtResponse.class
 org\example\cxc_hrm\domain\response\StandardResponse.class
 org\example\cxc_hrm\config\SecurityConfig.class
 org\example\cxc_hrm\service\RoleService.class
+org\example\cxc_hrm\controller\UserController.class
 org\example\cxc_hrm\entity\BaseEntity.class
 org\example\cxc_hrm\exception\GlobalExceptionHandler.class
 org\example\cxc_hrm\domain\response\StandardResponse$StandardResponseBuilder.class
