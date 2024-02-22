@@ -1,11 +1,14 @@
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\CompanyEntity.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\mapper\RoleMapper.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\UserEntity.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\controller\RoleController.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\enums\Status.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\UserService.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\CxcHrmApplication.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\exception\GlobalExceptionHandler.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\jwt\JwtTokenService.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\domain\response\StandardResponse.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\impl\RoleServiceImpl.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\exception\ForbiddenException.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\BaseEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\impl\UserServiceImpl.java
@@ -23,6 +26,7 @@ D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\enums\Position
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\TaskEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\ProjectEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\domain\response\JwtResponse.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\domain\RoleDto.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\domain\VerifyForgetPasswordDto.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\entity\RoleEntity.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\jwt\JwtTokenFilter.java
@@ -31,3 +35,4 @@ D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\config\SecurityConfig
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\repository\UserRepository.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\auth\AuthenticationService.java
 D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\mapper\UserMapper.java
+D:\CoWorkingZone\CXC_HRM\src\main\java\org\example\cxc_hrm\service\RoleService.java
