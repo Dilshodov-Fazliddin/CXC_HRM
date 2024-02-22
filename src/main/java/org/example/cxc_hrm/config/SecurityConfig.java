@@ -35,6 +35,7 @@ public class SecurityConfig {
     }
 
     private final String[] permitAll = {"/swagger-ui/**", "/v3/api-docs/**", "/cxc/v1/user/auth/**"};
+    private final String[] onlyAdmin = {"/cxc/v1/create","/cxc/v1/update","/cxc/v1/delete{id}","/cxc/v1/get-all"};
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -50,6 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requestsConfigurer) ->
                         requestsConfigurer
                                 .requestMatchers(permitAll).permitAll()
+                                .requestMatchers(onlyAdmin).hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
