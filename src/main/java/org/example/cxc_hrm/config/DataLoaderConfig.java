@@ -27,13 +27,12 @@ public class DataLoaderConfig implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (forDataLoader.equals("always")) {
-
             RoleEntity roleAdmin = userRoleRepository.save(RoleEntity.builder().name("ROLE_ADMIN").build());
             RoleEntity roleUser = userRoleRepository.save(RoleEntity.builder().name("ROLE_USER").build());
             System.out.println("Basic Role successfully saved");
-            userRepository.save(UserEntity.builder().firstname("admin").lastname("admin").birthDay(LocalDate.parse("2003-01-01")).mail("admin@gmail.com").isCredentialsNonExpired(true).isAccountNonExpired(true).isAccountNonLocked(true).isEnabled(true).password(passwordEncoder.encode("admin")).role(roleAdmin).build());
+            userRepository.save(UserEntity.builder().username("admin").firstname("admin").lastname("admin").birthDay(LocalDate.parse("2003-01-01")).mail("admin@gmail.com").isCredentialsNonExpired(true).isAccountNonExpired(true).isAccountNonLocked(true).isEnabled(true).password(passwordEncoder.encode("admin")).role(roleAdmin).build());
             System.out.println("Admin saved");
-            userRepository.save(UserEntity.builder().firstname("user").lastname("user").birthDay(LocalDate.parse("2003-01-01")).mail("user@gmail.com").isCredentialsNonExpired(true).isAccountNonExpired(true).isAccountNonLocked(true).isEnabled(true).password(passwordEncoder.encode("user")).role(roleUser).build());
+            userRepository.save(UserEntity.builder().username("user").firstname("user").lastname("user").birthDay(LocalDate.parse("2003-01-01")).mail("user@gmail.com").isCredentialsNonExpired(true).isAccountNonExpired(true).isAccountNonLocked(true).isEnabled(true).password(passwordEncoder.encode("user")).role(roleUser).build());
             System.out.println("User saved");
         }
     }

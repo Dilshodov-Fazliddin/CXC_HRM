@@ -1,11 +1,10 @@
 package org.example.cxc_hrm.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import org.example.cxc_hrm.entity.enums.Position;
+import org.example.cxc_hrm.entity.enums.UserStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,20 +20,25 @@ import java.util.Collections;
 @Setter
 @Builder
 public class UserEntity extends BaseEntity implements UserDetails {
+    @Column(nullable = false)
     private String firstname;
+    @Column(nullable = false)
     private String lastname;
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String mail;
     private String password;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDay;
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String username;
+    @Enumerated(value = EnumType.STRING)
     private Position position;
     @ManyToOne
     private CompanyEntity company;
     private String notifications;
     private Integer code;
+    @Enumerated(value = EnumType.STRING)
+    private UserStatus userStatus;
     @ManyToOne
     private RoleEntity role;
     private Boolean isAccountNonExpired;
