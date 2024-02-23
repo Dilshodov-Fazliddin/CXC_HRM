@@ -21,4 +21,5 @@ public interface UserService {
      ResponseEntity<StandardResponse<?>>blockUser(UUID id);
      ResponseEntity<StandardResponse<?>>unblockUser(UUID id);
      ResponseEntity<StandardResponse<?>>addWorker(UUID userId, UUID companyId, Position position);
+     ResponseEntity<StandardResponse<?>>deleteWorker(UUID userId, UUID companyId);
 }

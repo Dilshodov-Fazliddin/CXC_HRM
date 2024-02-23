@@ -137,5 +137,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return ResponseEntity.ok(StandardResponse.builder().data(null).message("Worker added").status(200).build());
     }
 
+    @Override
+    public ResponseEntity<StandardResponse<?>> deleteWorker(UUID userId, UUID companyId) {
+        UserEntity user = userRepository.findById(userId).orElseThrow(() -> new DataNotFoundException("User not found"));
+        CompanyEntity company = companyRepository.findById(companyId).orElseThrow(() -> new DataNotFoundException("Company not found"));
+        user.setCompany(null);
+        user.setPosition(null);
+        userRepository.save(user);
+        company.setMembers(company.getMembers()-1);
+        companyRepository.save(company);
+        return ResponseEntity.ok(StandardResponse.builder().status(200).message("Worker deleted").data(null).build());
+    }
+
 
 }

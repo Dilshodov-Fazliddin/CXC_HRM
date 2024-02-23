@@ -25,8 +25,13 @@ public class UserController {
         return userService.unblockUser(id);
     }
 
-    @PostMapping("/addWorker")
+    @PostMapping("/add-worker")
     public ResponseEntity<StandardResponse<?>>addWorker(@RequestParam UUID userId, @RequestParam UUID companyId, @RequestParam Position position){
         return userService.addWorker(userId,companyId,position);
+    }
+
+    @DeleteMapping("/delete-worker")
+    public ResponseEntity<StandardResponse<?>>deleteWorker(@RequestParam UUID userId, @RequestParam UUID companyId){
+        return userService.deleteWorker(userId,companyId);
     }
 }

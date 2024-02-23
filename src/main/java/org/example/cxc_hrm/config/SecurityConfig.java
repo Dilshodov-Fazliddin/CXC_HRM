@@ -35,7 +35,7 @@ public class SecurityConfig {
     }
 
     private final String[] permitAll = {"/swagger-ui/**", "/v3/api-docs/**", "/cxc/v1/user/auth/**"};
-    private final String[] onlyAdmin = {"/cxc/v1/role/create","/cxc/v1/role/update","/cxc/v1/role/delete{id}","/cxc/v1/role/get-all","/cxc/v1/user/block","cxc/v1/user/unblock","cxc/v1/company/**","cxc/v1/user/addWorker"};
+    private final String[] onlyAdmin = {"/cxc/v1/role/create","/cxc/v1/role/update","/cxc/v1/role/delete{id}","/cxc/v1/role/get-all","/cxc/v1/user/block","cxc/v1/user/unblock","cxc/v1/company/**","cxc/v1/user/add-worker","cxc/v1/user/delete-worker"};
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
