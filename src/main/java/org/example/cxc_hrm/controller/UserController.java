@@ -2,12 +2,10 @@ package org.example.cxc_hrm.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.cxc_hrm.domain.response.StandardResponse;
+import org.example.cxc_hrm.entity.enums.Position;
 import org.example.cxc_hrm.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -25,5 +23,10 @@ public class UserController {
     @PutMapping("/unblock")
     public ResponseEntity<StandardResponse<?>>unblockUser(@RequestParam UUID id){
         return userService.unblockUser(id);
+    }
+
+    @PostMapping("/addWorker")
+    public ResponseEntity<StandardResponse<?>>addWorker(@RequestParam UUID userId, @RequestParam UUID companyId, @RequestParam Position position){
+        return userService.addWorker(userId,companyId,position);
     }
 }

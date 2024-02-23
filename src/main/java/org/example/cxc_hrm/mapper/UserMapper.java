@@ -3,6 +3,7 @@ package org.example.cxc_hrm.mapper;
 import lombok.RequiredArgsConstructor;
 import org.example.cxc_hrm.domain.UserCreateDto;
 import org.example.cxc_hrm.entity.UserEntity;
+import org.example.cxc_hrm.entity.enums.UserStatus;
 import org.example.cxc_hrm.exception.DataNotFoundException;
 import org.example.cxc_hrm.repository.RoleRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +31,7 @@ public class UserMapper {
                 .isEnabled(true)
                 .isAccountNonLocked(true)
                 .isCredentialsNonExpired(true)
+                .userStatus(UserStatus.ACTIVE)
                 .build();
     }
 }

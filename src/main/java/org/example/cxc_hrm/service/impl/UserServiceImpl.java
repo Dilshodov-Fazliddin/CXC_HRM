@@ -6,11 +6,15 @@ import org.example.cxc_hrm.domain.VerifyForgetPasswordDto;
 import org.example.cxc_hrm.domain.response.JwtResponse;
 import org.example.cxc_hrm.domain.response.StandardResponse;
 import org.example.cxc_hrm.domain.UserCreateDto;
+import org.example.cxc_hrm.entity.CompanyEntity;
 import org.example.cxc_hrm.entity.UserEntity;
+import org.example.cxc_hrm.entity.enums.Position;
+import org.example.cxc_hrm.entity.enums.UserStatus;
 import org.example.cxc_hrm.exception.DataNotFoundException;
 import org.example.cxc_hrm.exception.NotAcceptableException;
 import org.example.cxc_hrm.jwt.JwtTokenService;
 import org.example.cxc_hrm.mapper.UserMapper;
+import org.example.cxc_hrm.repository.CompanyRepository;
 import org.example.cxc_hrm.repository.UserRepository;
 import org.example.cxc_hrm.service.MailService;
 import org.example.cxc_hrm.service.UserService;
@@ -29,6 +33,7 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
     private final MailService mailService;
+    private final CompanyRepository companyRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final JwtTokenService jwtTokenService;
@@ -106,6 +111,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public ResponseEntity<StandardResponse<?>> blockUser(UUID id) {
         UserEntity user = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException("User not found"));
         user.setIsEnabled(false);
+        user.setUserStatus(UserStatus.BANNED);
         userRepository.save(user);
         return ResponseEntity.ok(StandardResponse.builder().data(null).status(200).message("User successfully blocked").build());
     }
@@ -114,8 +120,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public ResponseEntity<StandardResponse<?>> unblockUser(UUID id) {
         UserEntity user = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException("User not found"));
         user.setIsEnabled(true);
+        user.setUserStatus(UserStatus.ACTIVE);
         userRepository.save(user);
         return ResponseEntity.ok(StandardResponse.builder().message("User successfully unblocked").status(200).data(null).build());
+    }
+
+    @Override
+    public ResponseEntity<StandardResponse<?>> addWorker(UUID userId, UUID companyId, Position position) {
+        UserEntity user = userRepository.findUserEntityByCompanyNullAndId(userId).orElseThrow(() -> new DataNotFoundException("User not found"));
+        CompanyEntity company = companyRepository.findById(companyId).orElseThrow(() -> new DataNotFoundException("Company not found"));
+        user.setCompany(company);
+        user.setPosition(position);
+        userRepository.save(user);
+        company.setMembers(company.getMembers()+1);
+        companyRepository.save(company);
+        return ResponseEntity.ok(StandardResponse.builder().data(null).message("Worker added").status(200).build());
     }
 
 
